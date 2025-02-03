@@ -1,7 +1,7 @@
 import streamlit as st
 import torch
 import pickle
-from models.classes import Seq2SeqTransformer, Encoder, Decoder, initialize_weights
+from models.classes import Seq2SeqTransformer, Encoder, Decoder, initialize_weights, DecoderLayer
 from utils import get_text_transform, en_tokenizer, my_tokenizer
 import sys
 import os
@@ -45,6 +45,7 @@ text_transform = get_text_transform(token_transform, vocab_transform)
 
 SRC_LANGUAGE = "en"
 TRG_LANGUAGE = "my"
+device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 # Model Configuration
 input_dim = len(vocab_transform["en"])
@@ -74,7 +75,7 @@ def load_model():
 
 
 model = load_model()
-st.success("✅ Model Loaded Successfully!")
+st.success("Model Loaded Successfully!")
 
 # Translation Function
 def translate_text(sentence):

@@ -46,6 +46,12 @@ This project focuses on **Machine Translation** from **English to Myanmar** usin
   - Click "Translate".
   - View the Myanmar translation output.
 
+- **Features**
+- Powered by an Additive Attention mechanism for effective sequence-to-sequence learning.
+- Supports real-time English-to-Myanmar translation.
+- Deployed using the Streamlit framework for a simple user interface.
+
+
 ## 8. Model Details
 - **Architecture**:
   - Encoder & Decoder with Multi-Head Self-Attention.
@@ -59,5 +65,21 @@ This project focuses on **Machine Translation** from **English to Myanmar** usin
 ## 9. Conclusion
 - **Additive Attention** performed best with the lowest validation loss.
 - The trained model is deployed as a web service for real-time translation.
+
+## Key Issues
+- Tokenizer mismatch between MBart50 and custom vocabularies during training and inference caused `<unk>` tokens to dominate the output. 
+
+## Further Improvements
+- Fine-tune the model with a larger Myanmar-specific dataset.
+- Standardize tokenization using the MBart50 tokenizer for the entire pipeline or using pyidaungsu tokenizer.
+- Add error handling for unsupported inputs.
+
+## Limitations
+- Custom vocabulary restricts compatibility with pre-trained MBart models.
+- Translation quality is constrained by the training dataset size and diversity.
+- Time limitation for this assignment.
+
+## Application Screenshot
+![English-to-Myanmar Translation App](a3_output.png)
 
 ---
